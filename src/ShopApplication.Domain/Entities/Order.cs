@@ -24,6 +24,8 @@ namespace ShopApplication.Domain.Entities
 
         public void AddItem(Item item, int quantity)
         {
+            if (item is null || quantity <= 0) return;
+
             var product = new OrderItem(item, quantity);
             Items.Add(product);
         }
