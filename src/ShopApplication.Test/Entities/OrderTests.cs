@@ -84,7 +84,7 @@ namespace ShopApplication.Test.Entities
 
         [TestMethod]
         [TestCategory("Domain")]
-        public void Dado_um_desconto_invalido_o_valor_do_pedido_deve_ser_55()
+        public void Se_desconto_invalido_o_valor_do_pedido_deve_ser_55()
         {
             var order = new Order(_customer, 5, null);
             order.AddItem(_item, 5);
@@ -94,11 +94,21 @@ namespace ShopApplication.Test.Entities
 
         [TestMethod]
         [TestCategory("Domain")]
-        public void Dado_um_desconto_10_o_valor_do_pedido_deve_ser_55()
+        public void Se_desconto_for_10_o_valor_do_pedido_deve_ser_50()
         {
             var order = new Order(_customer, 10, _discount);
             order.AddItem(_item, 5);
             Assert.AreEqual(order.Total(), 50);
         }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Se_taxa_entrega_for_10_o_valor_do_pedido_deve_ser_50()
+        {
+            var order = new Order(_customer, 10, _discount);
+            order.AddItem(_item, 5);
+            Assert.AreEqual(order.Total(), 50);
+        }
+
     }
 }
